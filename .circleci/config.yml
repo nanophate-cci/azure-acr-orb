@@ -2,6 +2,11 @@ version: 2.1
 orbs:
   azure-acr: circleci/azure-acr@0.2.0
   
+executors:
+  docker_build:
+    machine:
+      docker_layer_caching: true
+  
 jobs:
   azure-acr/build-and-push-image:
     machine: true
