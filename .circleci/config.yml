@@ -1,0 +1,23 @@
+version: 2.1
+orbs:
+  azure-acr: circleci/azure-acr@0.2.0
+  
+jobs:
+  azure-acr/build-and-push-image:
+    machine: true
+    steps:
+      - checkout  
+  
+
+workflows:
+  version: 2.1
+  staging:
+    jobs:
+      - azure-acr/build-and-push-image:
+          name: azure-acr/prod
+          context: ACR
+          login-server-name: $SERVER_NAME
+          registry-name: $REGISTRY_NAME
+          dockerfile: Dockerfile
+          executor: docker_build
+          repo: aaaaa
